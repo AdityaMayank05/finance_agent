@@ -113,10 +113,8 @@ export const Squares: React.FC<SquaresProps> = ({
   // Update dimensions on resize
   useEffect(() => {
     const handleResize = () => {
-      if (containerRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        // Update squares on resize if needed
-      }
+      // Resize handler is kept for future functionality
+      // but currently not doing anything
     };
 
     window.addEventListener('resize', handleResize);
