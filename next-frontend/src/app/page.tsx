@@ -41,7 +41,7 @@ export default function Home() {
     setLoading(true);
     setMarkdownResult(`Fetching analysis for **${trimmed}**...`);
     try {
-      const response = await fetch('http://127.0.0.1:5001/analyze', {
+      const response = await fetch('https://finance-agent-4394.onrender.com/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ stock_symbol: trimmed, analysis_type: analysisType }),
