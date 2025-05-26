@@ -10,14 +10,12 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -58,9 +56,9 @@ export default function Home() {
       } else {
         throw new Error(json.message || 'Unexpected API response');
       }
-    } catch (err: any) {
+    } catch (err: Error | unknown) {
       setMarkdownResult('');
-      setError(err.message || 'An error occurred during analysis.');
+      setError(err instanceof Error ? err.message : 'An error occurred during analysis.');
     } finally {
       setLoading(false);
     }

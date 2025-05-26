@@ -53,7 +53,7 @@ const Square: React.FC<SquareProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [x, y, speed, direction]);
+  }, [x, y, speed, direction, position.x, position.y]);
 
   return (
     <rect
@@ -92,14 +92,14 @@ export const Squares: React.FC<SquaresProps> = ({
   direction = 'diagonal',
 }) => {
   const containerRef = useRef<SVGSVGElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 1000, height: 1000 });
+  const [containerSize, setContainerSize] = useState({ width: 1000, height: 1000 });
   const [squares, setSquares] = useState<{ id: number; x: number; y: number }[]>([]);
 
   // Generate random squares
   useEffect(() => {
     if (containerRef.current) {
       const { width, height } = containerRef.current.getBoundingClientRect();
-      setDimensions({ width, height });
+      setContainerSize({ width, height });
       
       const newSquares = Array.from({ length: count }, (_, i) => ({
         id: i,
@@ -116,7 +116,7 @@ export const Squares: React.FC<SquaresProps> = ({
     const handleResize = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
+        setContainerSize({ width, height });
       }
     };
 
