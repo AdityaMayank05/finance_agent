@@ -1,4 +1,5 @@
 // @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
